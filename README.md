@@ -49,6 +49,7 @@ pip install -r requirements.txt
 |- classifier.pkl  # saved model 
 
 - README.md
+- requirements.txt
 ~~~~
 
 ### Project Components:
