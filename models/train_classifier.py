@@ -144,7 +144,6 @@ def evaluate_model(model, X_test, Y_test, category_names):
         category_names (list(str)): names of the classes
     """
     Y_pred = model.predict(X_test)
-    print(Y_pred)
     for (i, col) in enumerate(category_names):
         print(col)
         print(classification_report(Y_test[:,i], Y_pred[:,i]))
