@@ -49,7 +49,7 @@ pip install -r requirements.txt
 
 ### Project Components:
 
-There are three components you'll need to complete for this project.
+There are three components in this project.
 
 1. **ETL Pipeline**
     
