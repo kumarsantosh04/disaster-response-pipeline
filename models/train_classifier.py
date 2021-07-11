@@ -127,7 +127,7 @@ def build_model():
             ('starting_verb', StartingVerbExtractor())
         ])),
 
-        ('clf',  MultiOutputClassifier(RandomForestClassifier()))
+        ('clf',  MultiOutputClassifier(RandomForestClassifier(class_weight='balanced', n_jobs=-1)))
     ])
         
     cv = GridSearchCV(estimator=pipeline, param_grid=parameters)
