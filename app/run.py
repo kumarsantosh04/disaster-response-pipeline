@@ -2,6 +2,7 @@ import json
 import plotly
 import pandas as pd
 
+import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 
@@ -10,7 +11,7 @@ from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
 from sklearn.externals import joblib
 from sqlalchemy import create_engine
-
+from sklearn.base import BaseEstimator, TransformerMixin
 
 app = Flask(__name__)
 
@@ -25,12 +26,60 @@ def tokenize(text):
 
     return clean_tokens
 
+class StartingVerbExtractor(BaseEstimator, TransformerMixin):
+    """[summary]
+
+    Args:
+        BaseEstimator ([type]): [description]
+        TransformerMixin ([type]): [description]
+    """
+
+    def starting_verb(self, text):
+        """checks if the starting work of sentence is verb
+
+        Args:
+            text (str): a sentence
+        Returns:
+            Boolean: return True for verb else False
+        """
+        sentence_list = nltk.sent_tokenize(text)
+        for sentence in sentence_list:
+            pos_tags = nltk.pos_tag(tokenize(sentence))
+            first_word, first_tag = pos_tags[0]
+            if first_tag in ['VB', 'VBP'] or first_word == 'RT':
+                return True
+        return False
+
+    def fit(self, x, y=None):
+        """dummy method for verb extractor fit
+
+        Args:
+            x ([type]): [description]
+            y ([type], optional): [description]. Defaults to None.
+
+        Returns:
+            [type]: [description]
+        """
+        return self
+
+    def transform(self, X):
+        """transforms sentences
+
+        Args:
+            X (numpy.ndarray(str)): array of sentences
+
+        Returns:
+            pandas.core.frame.DataFrame: tagged sentences in a pandas dataframe
+        """
+        X_tagged = pd.Series(X).apply(self.starting_verb)
+        return pd.DataFrame(X_tagged)
+
 # load data
 engine = create_engine('sqlite:///../data/DisasterResponse.db')
 df = pd.read_sql_table('DisasterResponse', engine)
 
 # load model
-model = joblib.load("../models/your_model_name.pkl")
+model = joblib.load("../models/classifier.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
