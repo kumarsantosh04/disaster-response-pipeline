@@ -75,3 +75,5 @@ There are three components in this project.
     * Outputs results on the test set
     * Exports the final model as a pickle file
 
+### Acknowledgement
+Udacity for providing the WebUI template code.
