@@ -1,4 +1,6 @@
 # Disaster Response Pipeline Project
+## Classifies message from a web UI into 36 different categories. 
+Loads messages and message categories data, trains a model on it and uses that model to classify a message into 36 categories on a web UI.
 
 ### Install requirements:
     
@@ -21,7 +23,9 @@ pip install -r requirements.txt
         ~~~~
 
 2. Run the following command in the app's directory to run your web app.
-    `python run.py`
+    ~~~~
+    python run.py
+    ~~~~
 
 3. Go to http://0.0.0.0:3001/ or http://localhost:3001/
 
