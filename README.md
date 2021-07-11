@@ -1,5 +1,13 @@
 # Disaster Response Pipeline Project
 
+### Install requirements:
+    
+Run the following commands in the project's root directory to install dependencies
+    
+~~~~
+pip install -r requirements.txt
+~~~~
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
@@ -13,7 +21,7 @@
 
 3. Go to http://0.0.0.0:3001/ or http://localhost:3001/
 
-### Project Components
+### Project Components:
 
 There are three components you'll need to complete for this project.
 
