@@ -43,7 +43,7 @@ def clean_data(df):
     #Convert category values to just numbers 0 or 1
     for column in categories:
         # set each value to be the last character of the string
-        categories[column] = categories[column].str.get(-1)
+        categories[column] = categories[column].str.get(-1).astype(int) >= 1
         
         # convert column from string to numeric
         categories[column] = categories[column].astype(int)
