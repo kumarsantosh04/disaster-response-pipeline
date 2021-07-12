@@ -1,6 +1,6 @@
 import sys
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, inspect
 
 
 def load_data(messages_filepath, categories_filepath):
@@ -73,7 +73,8 @@ def save_data(df, database_filename):
         database_filename (str): database file path
     """
     engine = create_engine(f'sqlite:///{database_filename}')
-    df.to_sql('DisasterResponse', engine, index=False)  
+    if not inspect(engine).has_table('DisasterResponse'):
+        df.to_sql('DisasterResponse', engine, index=False)  
 
 
 def main():
