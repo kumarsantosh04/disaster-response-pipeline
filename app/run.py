@@ -91,7 +91,15 @@ def index():
     # TODO: Below is an example - modify to extract data for your own visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
+
+    # adding count of messages in each categories
+    category_names = df.drop(['id','message', 'original', 'genre'], axis=1).columns
+    cat_msgs_count = {}
+    for category in category_names:
+        cat_msgs_count[category] = df[df[category]==1].shape[0]
+    # reverse sorting the messages count for better visualization
+    cat_msgs_count = sorted(cat_msgs_count.items(), key=lambda x: x[1], reverse=True)
+        
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
@@ -110,6 +118,24 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=[item[0] for item in cat_msgs_count],
+                    y=[item[1] for item in cat_msgs_count]
+                )
+            ],
+
+            'layout': {
+                'title': 'Distribution of Message categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "category name"
                 }
             }
         }
