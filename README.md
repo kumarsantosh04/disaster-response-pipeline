@@ -75,6 +75,8 @@ There are three components in this project.
     * Trains and tunes a model using GridSearchCV
     * Outputs results on the test set
     * Exports the final model as a pickle file
+ 
+ 3. **App(WebUI)**
 
 ### Acknowledgement
 Udacity for providing the WebUI template code.
