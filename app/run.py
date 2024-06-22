@@ -14,6 +14,10 @@ from sklearn.externals import joblib
 from sqlalchemy import create_engine
 from sklearn.base import BaseEstimator, TransformerMixin
 
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+
 app = Flask(__name__)
 
 def tokenize(text):
