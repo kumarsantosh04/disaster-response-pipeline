@@ -14,9 +14,7 @@ import joblib
 from sqlalchemy import create_engine
 from sklearn.base import BaseEstimator, TransformerMixin
 
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('averaged_perceptron_tagger')
+nltk.data.path.append("/var/task/api/nltk_data/")
 
 app = Flask(__name__)
 
