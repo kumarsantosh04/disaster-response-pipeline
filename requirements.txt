@@ -1,8 +1,8 @@
-numpy==1.17.4
-pandas==0.25.3
-scikit-learn==0.22.1
-nltk==3.6.5
-flask==2.2.2
-sqlalchemy==1.4.19
-plotly==4.14.3
-gunicorn
+numpy==2.0.0
+pandas==2.2.2
+scikit-learn==1.5.0
+nltk==3.8.1
+flask==3.0.3
+sqlalchemy==2.0.31
+plotly==5.22.0
+gunicorn==22.0.0

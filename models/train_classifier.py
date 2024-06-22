@@ -120,7 +120,7 @@ def build_model():
         ('features', FeatureUnion([
 
             ('text_pipeline', Pipeline([
-                ('vect', CountVectorizer(tokenizer=tokenize)),
+                ('vect', CountVectorizer(tokenizer=tokenize, token_pattern=None)),
                 ('tfidf', TfidfTransformer())
             ])),
 
@@ -130,7 +130,7 @@ def build_model():
         ('clf',  MultiOutputClassifier(RandomForestClassifier(class_weight='balanced', n_jobs=-1)))
     ])
         
-    cv = GridSearchCV(estimator=pipeline, param_grid=parameters)
+    cv = GridSearchCV(estimator=pipeline, param_grid=parameters, verbose=10, n_jobs=-1)
     return cv
 
 
