@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "==2.0.0"
+pandas = "==2.2.2"
+scikit-learn = "==1.5.0"
+nltk = "==3.8.1"
+flask = "==3.0.3"
+sqlalchemy = "==2.0.31"
+plotly = "==5.22.0"
+gunicorn = "==22.0.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
